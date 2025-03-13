@@ -13,7 +13,11 @@ import {
   CheckCircleFilled,
   CloseCircleFilled,
   UserOutlined,
-  ShieldOutlined
+  SafetyCertificateFilled,
+  KeyOutlined,
+  QuestionCircleOutlined,
+  SecurityScanOutlined,
+  AppstoreOutlined
 } from '@ant-design/icons';
 import '../styles/login.css';
 import useLoginAnimation from '../hooks/useLoginAnimation';
@@ -22,9 +26,9 @@ const LoginForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [loginStatus, setLoginStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const navigate = useNavigate();
-  const { isVisible: formVisible } = useLoginAnimation(300);
-  const { isVisible: socialVisible } = useLoginAnimation(900);
-  const { isVisible: footerVisible } = useLoginAnimation(1200);
+  const { isVisible: formVisible } = useLoginAnimation({ delay: 300 });
+  const { isVisible: socialVisible } = useLoginAnimation({ delay: 900 });
+  const { isVisible: footerVisible } = useLoginAnimation({ delay: 1200 });
   
   // Add glass effect animation
   const [glassActive, setGlassActive] = useState(false);
@@ -114,7 +118,7 @@ const LoginForm: React.FC = () => {
     <div className={`login-card ${glassActive ? 'glass-active' : ''}`}>
       <div className="login-card-inner">
         <div className="login-card-icon">
-          <ShieldOutlined className="login-shield-icon" />
+          <SafetyCertificateFilled className="login-shield-icon" />
           <UserOutlined className="login-user-icon" />
         </div>
         
@@ -140,6 +144,7 @@ const LoginForm: React.FC = () => {
                 type="email"
                 disabled={loading}
                 className="glass-input"
+                suffix={<SecurityScanOutlined className="input-icon-suffix" />}
               />
             </Form.Item>
           </div>
@@ -155,11 +160,12 @@ const LoginForm: React.FC = () => {
                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                 disabled={loading}
                 className="glass-input"
+                suffix={<KeyOutlined className="input-icon-suffix" />}
               />
             </Form.Item>
             <div style={{ textAlign: 'right', marginTop: '-20px', marginBottom: '20px' }}>
               <a href="#" className="forgot-password">
-                Forgot Password?
+                Forgot Password? <QuestionCircleOutlined />
               </a>
             </div>
           </div>
@@ -187,10 +193,13 @@ const LoginForm: React.FC = () => {
           <div className="social-login-button">
             <GoogleOutlined style={{ fontSize: '20px', color: '#ea4335' }} />
           </div>
+          <div className="social-login-button">
+            <AppstoreOutlined style={{ fontSize: '20px', color: '#0078d7' }} />
+          </div>
         </div>
         
         <div className={`login-footer ${footerVisible ? 'footer-visible' : ''}`}>
-          Don't have an account? <a href="#" className="signup-link">Sign up</a>
+          Don't have an account? <a href="#" className="signup-link">Sign up <ArrowRightOutlined /></a>
         </div>
       </div>
       
@@ -198,6 +207,8 @@ const LoginForm: React.FC = () => {
         <div className="glass-bubble glass-bubble-1"></div>
         <div className="glass-bubble glass-bubble-2"></div>
         <div className="glass-bubble glass-bubble-3"></div>
+        <div className="glass-bubble glass-bubble-4"></div>
+        <div className="glass-bubble glass-bubble-5"></div>
       </div>
     </div>
   );

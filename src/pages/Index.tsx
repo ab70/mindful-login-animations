@@ -1,16 +1,16 @@
 
 import React from 'react';
-import { Avatar, Space } from 'antd';
-import { CheckOutlined } from '@ant-design/icons';
-import LoginBackground from '@/components/LoginBackground';
-import AnimatedLogo from '@/components/AnimatedLogo';
-import LoginForm from '@/components/LoginForm';
-import useLoginAnimation from '@/hooks/useLoginAnimation';
+import { Avatar, Space, Badge } from 'antd';
+import { CheckOutlined, ShieldOutlined, LockOutlined, SafetyOutlined, TeamOutlined } from '@ant-design/icons';
+import LoginBackground from '../components/LoginBackground';
+import AnimatedLogo from '../components/AnimatedLogo';
+import LoginForm from '../components/LoginForm';
+import useLoginAnimation from '../hooks/useLoginAnimation';
 import '../styles/login.css';
 
 const Index = () => {
-  const { isVisible: contentVisible } = useLoginAnimation(100);
-  const { isVisible: imageVisible } = useLoginAnimation(600);
+  const { isVisible: contentVisible } = useLoginAnimation({ delay: 100 });
+  const { isVisible: imageVisible } = useLoginAnimation({ delay: 600 });
   
   return (
     <div className="login-page">
@@ -24,6 +24,12 @@ const Index = () => {
       <div className="login-right">
         <LoginBackground />
         <div className={`promo-card ${imageVisible ? 'visible' : ''}`}>
+          <div className="promo-card-icons">
+            <ShieldOutlined className="promo-icon" />
+            <LockOutlined className="promo-icon" />
+            <SafetyOutlined className="promo-icon" />
+          </div>
+          
           <h2>Enterprise-Grade Identity Management</h2>
           <p>
             Secure your organization with our advanced IAM solution. Protect your assets, 
@@ -73,14 +79,26 @@ const Index = () => {
           </div>
           
           <div className="testimonials">
-            <div className="avatar-group">
-              <Avatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&crop=faces&auto=format&fit=crop" />
-              <Avatar src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200&h=200&crop=faces&auto=format&fit=crop" />
-              <Avatar src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&crop=faces&auto=format&fit=crop" />
-            </div>
-            <div className="testimonial-text">
-              <span>10,000+</span> companies trust our platform
-            </div>
+            <Badge.Ribbon text="Trusted" color="#1677ff">
+              <div className="trust-badge">
+                <TeamOutlined style={{ fontSize: '24px', marginBottom: '8px' }} />
+                <div className="avatar-group">
+                  <Avatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&crop=faces&auto=format&fit=crop" />
+                  <Avatar src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200&h=200&crop=faces&auto=format&fit=crop" />
+                  <Avatar src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&crop=faces&auto=format&fit=crop" />
+                  <Avatar style={{ backgroundColor: '#1677ff' }}>+</Avatar>
+                </div>
+                <div className="testimonial-text">
+                  <span>10,000+</span> companies trust our platform
+                </div>
+              </div>
+            </Badge.Ribbon>
+          </div>
+          
+          <div className="security-badges">
+            <div className="security-badge">ISO 27001</div>
+            <div className="security-badge">GDPR</div>
+            <div className="security-badge">SOC 2</div>
           </div>
         </div>
       </div>

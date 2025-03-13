@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 type AnimationType = 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'scale';
 
-interface LoginAnimationOptions {
+export interface LoginAnimationOptions {
   delay?: number;
   duration?: number;
   type?: AnimationType;
@@ -52,12 +52,6 @@ export const useLoginAnimation = (options: LoginAnimationOptions = {}) => {
   }, [delay, duration, type]);
   
   return { isVisible, animationClass };
-};
-
-// For backward compatibility
-export const useLoginAnimation = (delay: number = 0) => {
-  const { isVisible } = useLoginAnimation({ delay });
-  return { isVisible };
 };
 
 export default useLoginAnimation;

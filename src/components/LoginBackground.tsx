@@ -9,7 +9,7 @@ const LoginBackground: React.FC = () => {
     if (!containerRef.current) return;
     
     // Create particles
-    const particlesCount = 50; // Increased particle count
+    const particlesCount = 80; // Increased particle count
     const container = containerRef.current;
     const containerRect = container.getBoundingClientRect();
     
@@ -52,12 +52,12 @@ const LoginBackground: React.FC = () => {
     }
     
     // Add floating light effects
-    const lightsCount = 5;
+    const lightsCount = 8;
     for (let i = 0; i < lightsCount; i++) {
       const light = document.createElement('div');
       light.classList.add('floating-light');
       
-      const size = Math.random() * 200 + 100; // 100-300px
+      const size = Math.random() * 300 + 100; // 100-400px
       const posX = Math.random() * containerRect.width;
       const posY = Math.random() * containerRect.height;
       const duration = Math.random() * 40 + 30; // 30-70s
@@ -66,13 +66,17 @@ const LoginBackground: React.FC = () => {
       light.style.height = `${size}px`;
       light.style.left = `${posX}px`;
       light.style.top = `${posY}px`;
-      light.style.opacity = (Math.random() * 0.3 + 0.1).toString(); // 0.1-0.4
+      light.style.opacity = (Math.random() * 0.4 + 0.1).toString(); // 0.1-0.5
+      
+      // Unique colors for lights
+      const hue = Math.floor(Math.random() * 60) + 190; // Blue-ish hues
+      light.style.background = `radial-gradient(circle, hsla(${hue}, 100%, 70%, 0.4) 0%, hsla(${hue}, 100%, 60%, 0) 70%)`;
       
       // Animation with keyframes
       light.animate(
         [
           { transform: 'translateY(0) translateX(0)', opacity: light.style.opacity },
-          { transform: `translateY(-${Math.random() * 50 + 30}px) translateX(${Math.random() * 50 - 25}px)`, opacity: (parseFloat(light.style.opacity) * 1.5).toString() },
+          { transform: `translateY(-${Math.random() * 80 + 30}px) translateX(${Math.random() * 80 - 40}px)`, opacity: (parseFloat(light.style.opacity) * 1.5).toString() },
           { transform: 'translateY(0) translateX(0)', opacity: light.style.opacity }
         ],
         {
@@ -84,10 +88,45 @@ const LoginBackground: React.FC = () => {
       container.appendChild(light);
     }
     
+    // Add decorative elements
+    const decorElements = 4;
+    for (let i = 0; i < decorElements; i++) {
+      const decor = document.createElement('div');
+      decor.classList.add('background-decor');
+      
+      const size = Math.random() * 120 + 40; // 40-160px
+      const posX = Math.random() * containerRect.width;
+      const posY = Math.random() * containerRect.height;
+      const rotation = Math.random() * 360;
+      const duration = Math.random() * 20 + 20; // 20-40s
+      
+      decor.style.width = `${size}px`;
+      decor.style.height = `${size}px`;
+      decor.style.left = `${posX}px`;
+      decor.style.top = `${posY}px`;
+      decor.style.transform = `rotate(${rotation}deg)`;
+      decor.style.opacity = (Math.random() * 0.15 + 0.05).toString(); // 0.05-0.2
+      
+      // Animation
+      decor.animate(
+        [
+          { transform: `rotate(${rotation}deg)` },
+          { transform: `rotate(${rotation + 20}deg)` },
+          { transform: `rotate(${rotation}deg)` }
+        ],
+        {
+          duration: duration * 1000,
+          iterations: Infinity
+        }
+      );
+      
+      container.appendChild(decor);
+    }
+    
     // Clean up
     return () => {
-      const particles = container.querySelectorAll('.particle, .floating-light');
-      particles.forEach(particle => particle.remove());
+      const elements = container.querySelectorAll('.particle, .floating-light, .background-decor');
+      elements.forEach(element => element.remove());
     };
   }, []);
   
@@ -96,6 +135,8 @@ const LoginBackground: React.FC = () => {
       <div className="blob-1"></div>
       <div className="blob-2"></div>
       <div className="blob-3"></div>
+      <div className="blob-4"></div>
+      <div className="gradient-overlay"></div>
       <div className="particles-container" ref={containerRef}></div>
     </div>
   );
