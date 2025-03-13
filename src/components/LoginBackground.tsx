@@ -1,121 +1,69 @@
 
 import React, { useEffect, useRef } from 'react';
+import '../styles/login.css';
 
 const LoginBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    // Set canvas dimensions
-    const setCanvasDimensions = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    // Call once to initialize
-    setCanvasDimensions();
-    
-    // Update on resize
-    window.addEventListener('resize', setCanvasDimensions);
-    
-    // Particle properties
-    const particles: {
-      x: number;
-      y: number;
-      radius: number;
-      color: string;
-      alpha: number;
-      speed: number;
-      direction: number;
-    }[] = [];
+    if (!containerRef.current) return;
     
     // Create particles
-    function createParticles() {
-      const particleCount = Math.min(Math.floor(window.innerWidth / 20), 50);
-      
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 1,
-          color: `hsl(210, 100%, 50%, ${Math.random() * 0.3 + 0.1})`,
-          alpha: Math.random() * 0.3 + 0.1,
-          speed: Math.random() * 0.2 + 0.1,
-          direction: Math.random() * Math.PI * 2
-        });
-      }
-    }
+    const particlesCount = 30;
+    const container = containerRef.current;
+    const containerRect = container.getBoundingClientRect();
     
-    // Draw particles
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Remove any existing particles
+    const existingParticles = container.querySelectorAll('.particle');
+    existingParticles.forEach(particle => particle.remove());
+    
+    // Create new particles
+    for (let i = 0; i < particlesCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
       
-      particles.forEach((particle, i) => {
-        // Move particles
-        particle.x += Math.cos(particle.direction) * particle.speed;
-        particle.y += Math.sin(particle.direction) * particle.speed;
-        
-        // Change direction slightly
-        particle.direction += (Math.random() - 0.5) * 0.01;
-        
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-        
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-        
-        // Connect particles that are close to each other
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[j].x - particle.x;
-          const dy = particles[j].y - particle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(210, 230, 255, ${0.1 * (1 - distance / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+      // Random position, size, and animation
+      const size = Math.random() * 6 + 2; // 2-8px
+      const posX = Math.random() * containerRect.width;
+      const posY = Math.random() * containerRect.height;
+      const duration = Math.random() * 20 + 10; // 10-30s
+      const delay = Math.random() * 5;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}px`;
+      particle.style.top = `${posY}px`;
+      particle.style.opacity = (Math.random() * 0.6 + 0.2).toString(); // 0.2-0.8
+      
+      // Animation with keyframes
+      particle.animate(
+        [
+          { transform: 'translateY(0) rotate(0deg)', opacity: particle.style.opacity },
+          { transform: `translateY(-${Math.random() * 100 + 50}px) rotate(${Math.random() * 360}deg)`, opacity: '0' }
+        ],
+        {
+          duration: duration * 1000,
+          delay: delay * 1000,
+          iterations: Infinity
         }
-      });
+      );
+      
+      container.appendChild(particle);
     }
     
-    // Animation loop
-    let animationId: number;
-    
-    function animate() {
-      drawParticles();
-      animationId = requestAnimationFrame(animate);
-    }
-    
-    createParticles();
-    animate();
-    
-    // Cleanup
+    // Clean up
     return () => {
-      window.removeEventListener('resize', setCanvasDimensions);
-      cancelAnimationFrame(animationId);
+      const particles = container.querySelectorAll('.particle');
+      particles.forEach(particle => particle.remove());
     };
   }, []);
   
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed inset-0 -z-10 bg-gradient-to-br from-background to-secondary"
-    />
+    <div className="login-background">
+      <div className="blob-1"></div>
+      <div className="blob-2"></div>
+      <div className="particles-container" ref={containerRef}></div>
+    </div>
   );
 };
 
