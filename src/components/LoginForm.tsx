@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Divider, notification, Spin } from 'antd';
 import { 
@@ -11,14 +11,29 @@ import {
   GithubOutlined,
   GoogleOutlined,
   CheckCircleFilled,
-  CloseCircleFilled
+  CloseCircleFilled,
+  UserOutlined,
+  ShieldOutlined
 } from '@ant-design/icons';
 import '../styles/login.css';
+import useLoginAnimation from '../hooks/useLoginAnimation';
 
 const LoginForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [loginStatus, setLoginStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const navigate = useNavigate();
+  const { isVisible: formVisible } = useLoginAnimation(300);
+  const { isVisible: socialVisible } = useLoginAnimation(900);
+  const { isVisible: footerVisible } = useLoginAnimation(1200);
+  
+  // Add glass effect animation
+  const [glassActive, setGlassActive] = useState(false);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setGlassActive(true);
+    }, 500);
+  }, []);
   
   const handleLogin = async (values: { email: string; password: string }) => {
     const { email, password } = values;
@@ -96,78 +111,93 @@ const LoginForm: React.FC = () => {
   };
   
   return (
-    <div className="login-card">
-      <Form
-        name="login-form"
-        initialValues={{ remember: true }}
-        onFinish={handleLogin}
-        size="large"
-        layout="vertical"
-      >
-        <div className="login-form-item">
-          <Form.Item
-            name="email"
-            rules={[{ required: true, message: 'Please input your email!' }]}
-          >
-            <Input 
-              prefix={<MailOutlined style={{ color: '#bfbfbf' }} />} 
-              placeholder="Email Address" 
-              type="email"
-              disabled={loading}
-            />
-          </Form.Item>
+    <div className={`login-card ${glassActive ? 'glass-active' : ''}`}>
+      <div className="login-card-inner">
+        <div className="login-card-icon">
+          <ShieldOutlined className="login-shield-icon" />
+          <UserOutlined className="login-user-icon" />
         </div>
         
-        <div className="login-form-item">
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password
-              prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
-              placeholder="Password"
-              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-              disabled={loading}
-            />
-          </Form.Item>
-          <div style={{ textAlign: 'right', marginTop: '-20px', marginBottom: '20px' }}>
-            <a href="#" style={{ fontSize: '14px', color: '#1677ff' }}>
-              Forgot Password?
-            </a>
+        <h2 className="login-title">Welcome Back</h2>
+        <p className="login-subtitle">Sign in to your secure account</p>
+        
+        <Form
+          name="login-form"
+          initialValues={{ remember: true }}
+          onFinish={handleLogin}
+          size="large"
+          layout="vertical"
+          className={formVisible ? 'form-visible' : ''}
+        >
+          <div className="login-form-item">
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: 'Please input your email!' }]}
+            >
+              <Input 
+                prefix={<MailOutlined style={{ color: '#bfbfbf' }} />} 
+                placeholder="Email Address" 
+                type="email"
+                disabled={loading}
+                className="glass-input"
+              />
+            </Form.Item>
+          </div>
+          
+          <div className="login-form-item">
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: 'Please input your password!' }]}
+            >
+              <Input.Password
+                prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
+                placeholder="Password"
+                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                disabled={loading}
+                className="glass-input"
+              />
+            </Form.Item>
+            <div style={{ textAlign: 'right', marginTop: '-20px', marginBottom: '20px' }}>
+              <a href="#" className="forgot-password">
+                Forgot Password?
+              </a>
+            </div>
+          </div>
+          
+          <div className="login-form-item">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className={`login-button ${loginStatus === 'success' ? 'success' : ''} ${loginStatus === 'error' ? 'error' : ''}`}
+              loading={loading}
+              icon={getButtonIcon()}
+              disabled={loading && loginStatus === 'idle'}
+            >
+              {loading ? '' : loginStatus === 'success' ? 'Success' : loginStatus === 'error' ? 'Error' : 'Sign In'}
+            </Button>
+          </div>
+        </Form>
+        
+        <Divider className={`login-divider ${socialVisible ? 'divider-visible' : ''}`}>or continue with</Divider>
+        
+        <div className={`social-login ${socialVisible ? 'social-visible' : ''}`}>
+          <div className="social-login-button">
+            <GithubOutlined style={{ fontSize: '20px', color: '#333' }} />
+          </div>
+          <div className="social-login-button">
+            <GoogleOutlined style={{ fontSize: '20px', color: '#ea4335' }} />
           </div>
         </div>
         
-        <div className="login-form-item">
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-button"
-            loading={loading}
-            icon={getButtonIcon()}
-            style={{
-              background: loginStatus === 'success' ? '#52c41a' : 
-                        loginStatus === 'error' ? '#ff4d4f' : '#1677ff'
-            }}
-            disabled={loading && loginStatus === 'idle'}
-          >
-            {loading ? '' : loginStatus === 'success' ? 'Success' : loginStatus === 'error' ? 'Error' : 'Sign In'}
-          </Button>
-        </div>
-      </Form>
-      
-      <Divider className="login-divider">or continue with</Divider>
-      
-      <div className="social-login">
-        <div className="social-login-button">
-          <GithubOutlined style={{ fontSize: '20px', color: '#333' }} />
-        </div>
-        <div className="social-login-button">
-          <GoogleOutlined style={{ fontSize: '20px', color: '#ea4335' }} />
+        <div className={`login-footer ${footerVisible ? 'footer-visible' : ''}`}>
+          Don't have an account? <a href="#" className="signup-link">Sign up</a>
         </div>
       </div>
       
-      <div className="login-footer">
-        Don't have an account? <a href="#" style={{ color: '#1677ff' }}>Sign up</a>
+      <div className="login-card-decoration">
+        <div className="glass-bubble glass-bubble-1"></div>
+        <div className="glass-bubble glass-bubble-2"></div>
+        <div className="glass-bubble glass-bubble-3"></div>
       </div>
     </div>
   );
