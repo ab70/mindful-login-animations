@@ -39,12 +39,12 @@ const AnimatedLogo: React.FC = () => {
           { 
             transform: 'scale(0)', 
             opacity: '0.7',
-            boxShadow: '0 0 10px rgba(22, 119, 255, 0.7)'
+            boxShadow: '0 0 10px rgba(82, 191, 203, 0.7)'
           },
           { 
             transform: 'scale(1)', 
             opacity: '0',
-            boxShadow: '0 0 0 rgba(22, 119, 255, 0)'
+            boxShadow: '0 0 0 rgba(82, 191, 203, 0)'
           }
         ],
         {
@@ -69,7 +69,7 @@ const AnimatedLogo: React.FC = () => {
         <SafetyCertificateFilled 
           style={{ 
             fontSize: 36, 
-            color: '#1677ff',
+            color: '#52bfcb',
             position: 'relative',
             zIndex: 2,
           }} 
@@ -113,7 +113,7 @@ const AnimatedLogo: React.FC = () => {
           margin: 0;
           font-size: 24px;
           font-weight: 700;
-          background: linear-gradient(90deg, #1677ff, #69c0ff);
+          background: linear-gradient(90deg, #52bfcb, #7ce0eb);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -130,13 +130,13 @@ const AnimatedLogo: React.FC = () => {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(22, 119, 255, 0.4) 0%, rgba(22, 119, 255, 0) 70%);
+          background: radial-gradient(circle, rgba(82, 191, 203, 0.4) 0%, rgba(82, 191, 203, 0) 70%);
           animation: glowPulse 2s infinite;
         }
         
         .logo-particle {
           position: absolute;
-          background: #1677ff;
+          background: #52bfcb;
           border-radius: 50%;
           z-index: 1;
         }

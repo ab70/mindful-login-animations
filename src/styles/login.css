@@ -1,4 +1,3 @@
-
 /* Login Page Animations */
 @keyframes fadeIn {
   from {
@@ -47,13 +46,13 @@
 
 @keyframes glowPulse {
   0% {
-    box-shadow: 0 0 5px rgba(22, 119, 255, 0.5);
+    box-shadow: 0 0 5px rgba(82, 191, 203, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(22, 119, 255, 0.8);
+    box-shadow: 0 0 20px rgba(82, 191, 203, 0.8);
   }
   100% {
-    box-shadow: 0 0 5px rgba(22, 119, 255, 0.5);
+    box-shadow: 0 0 5px rgba(82, 191, 203, 0.5);
   }
 }
 
@@ -92,28 +91,28 @@
 
 @keyframes borderGlow {
   0% {
-    border-color: rgba(22, 119, 255, 0.2);
+    border-color: rgba(82, 191, 203, 0.2);
   }
   50% {
-    border-color: rgba(22, 119, 255, 0.8);
+    border-color: rgba(82, 191, 203, 0.8);
   }
   100% {
-    border-color: rgba(22, 119, 255, 0.2);
+    border-color: rgba(82, 191, 203, 0.2);
   }
 }
 
 @keyframes rotateGlow {
   0% {
     transform: rotate(0deg);
-    box-shadow: 0 0 20px rgba(22, 119, 255, 0.5);
+    box-shadow: 0 0 20px rgba(82, 191, 203, 0.5);
   }
   50% {
     transform: rotate(180deg);
-    box-shadow: 0 0 40px rgba(22, 119, 255, 0.8);
+    box-shadow: 0 0 40px rgba(82, 191, 203, 0.8);
   }
   100% {
     transform: rotate(360deg);
-    box-shadow: 0 0 20px rgba(22, 119, 255, 0.5);
+    box-shadow: 0 0 20px rgba(82, 191, 203, 0.5);
   }
 }
 
@@ -197,7 +196,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f5ff;
+  background-color: #f0fafc;
   position: relative;
   overflow: hidden;
 }
@@ -303,7 +302,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(90deg, #1677ff, #69c0ff);
+  background: linear-gradient(90deg, #52bfcb, #7ce0eb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -333,7 +332,7 @@
 
 .login-shield-icon {
   font-size: 60px;
-  color: #1677ff;
+  color: #52bfcb;
   position: absolute;
   animation: pulse 6s infinite;
 }
@@ -356,8 +355,8 @@
 
 .glass-input:hover, .glass-input:focus {
   background: rgba(255, 255, 255, 0.35) !important;
-  border-color: rgba(22, 119, 255, 0.6) !important;
-  box-shadow: 0 4px 15px rgba(22, 119, 255, 0.15) !important;
+  border-color: rgba(82, 191, 203, 0.6) !important;
+  box-shadow: 0 4px 15px rgba(82, 191, 203, 0.15) !important;
 }
 
 .glass-input input {
@@ -365,7 +364,7 @@
 }
 
 .input-icon-suffix {
-  color: rgba(22, 119, 255, 0.6);
+  color: rgba(82, 191, 203, 0.6);
   font-size: 16px;
   opacity: 0.7;
   transition: all 0.3s ease;
@@ -404,7 +403,7 @@
   transition: all 0.5s ease !important;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(45deg, #1677ff, #69c0ff) !important;
+  background: linear-gradient(45deg, #52bfcb, #7ce0eb) !important;
   border: none !important;
 }
 
@@ -430,7 +429,7 @@
 
 .login-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(22, 119, 255, 0.3) !important;
+  box-shadow: 0 8px 15px rgba(82, 191, 203, 0.3) !important;
 }
 
 .login-button.success {
@@ -514,15 +513,15 @@
 
 /* Enhanced Link Styles */
 .forgot-password, .signup-link {
-  color: #1677ff;
+  color: #52bfcb;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
 }
 
 .forgot-password:hover, .signup-link:hover {
-  color: #69c0ff;
-  text-shadow: 0 0 8px rgba(22, 119, 255, 0.4);
+  color: #7ce0eb;
+  text-shadow: 0 0 8px rgba(82, 191, 203, 0.4);
 }
 
 .forgot-password::after, .signup-link::after {
@@ -532,7 +531,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #1677ff, #69c0ff);
+  background: linear-gradient(90deg, #52bfcb, #7ce0eb);
   transition: width 0.3s ease;
 }
 
@@ -549,7 +548,7 @@
 }
 
 .blob-1 {
-  background: rgba(22, 119, 255, 0.2);
+  background: rgba(82, 191, 203, 0.2);
   width: 400px;
   height: 400px;
   top: -100px;
@@ -558,7 +557,7 @@
 }
 
 .blob-2 {
-  background: rgba(22, 119, 255, 0.15);
+  background: rgba(82, 191, 203, 0.15);
   width: 300px;
   height: 300px;
   bottom: -50px;
@@ -567,7 +566,7 @@
 }
 
 .blob-3 {
-  background: rgba(105, 192, 255, 0.15);
+  background: rgba(124, 224, 235, 0.15);
   width: 350px;
   height: 350px;
   top: 50%;
@@ -576,7 +575,7 @@
 }
 
 .blob-4 {
-  background: rgba(22, 119, 255, 0.12);
+  background: rgba(82, 191, 203, 0.12);
   width: 250px;
   height: 250px;
   top: 20%;
@@ -781,16 +780,16 @@
 .security-badge {
   padding: 6px 12px;
   border-radius: 20px;
-  background: rgba(22, 119, 255, 0.1);
-  color: #1677ff;
+  background: rgba(82, 191, 203, 0.1);
+  color: #52bfcb;
   font-size: 12px;
   font-weight: 600;
-  border: 1px solid rgba(22, 119, 255, 0.3);
+  border: 1px solid rgba(82, 191, 203, 0.3);
   transition: all 0.3s ease;
 }
 
 .security-badge:hover {
-  background: rgba(22, 119, 255, 0.2);
+  background: rgba(82, 191, 203, 0.2);
   transform: scale(1.05);
 }
 

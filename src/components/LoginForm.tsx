@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Divider, notification, Spin } from 'antd';
@@ -16,7 +15,6 @@ import {
   SafetyCertificateFilled,
   KeyOutlined,
   QuestionCircleOutlined,
-  SecurityScanOutlined,
   AppstoreOutlined
 } from '@ant-design/icons';
 import '../styles/login.css';
@@ -194,7 +192,7 @@ const LoginForm: React.FC = () => {
             <GoogleOutlined style={{ fontSize: '20px', color: '#ea4335' }} />
           </div>
           <div className="social-login-button">
-            <AppstoreOutlined style={{ fontSize: '20px', color: '#0078d7' }} />
+            <AppstoreOutlined style={{ fontSize: '20px', color: '#52bfcb' }} />
           </div>
         </div>
         
