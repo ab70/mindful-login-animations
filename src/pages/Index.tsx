@@ -1,7 +1,13 @@
 
 import React from 'react';
 import { Avatar, Space, Badge } from 'antd';
-import { CheckOutlined, ShieldOutlined, LockOutlined, SafetyOutlined, TeamOutlined } from '@ant-design/icons';
+import { 
+  CheckOutlined, 
+  SafetyOutlined, 
+  LockOutlined, 
+  TeamOutlined,
+  SecurityScanOutlined
+} from '@ant-design/icons';
 import LoginBackground from '../components/LoginBackground';
 import AnimatedLogo from '../components/AnimatedLogo';
 import LoginForm from '../components/LoginForm';
@@ -25,7 +31,7 @@ const Index = () => {
         <LoginBackground />
         <div className={`promo-card ${imageVisible ? 'visible' : ''}`}>
           <div className="promo-card-icons">
-            <ShieldOutlined className="promo-icon" />
+            <SecurityScanOutlined className="promo-icon" />
             <LockOutlined className="promo-icon" />
             <SafetyOutlined className="promo-icon" />
           </div>

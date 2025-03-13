@@ -91,7 +91,7 @@ const AnimatedLogo: React.FC = () => {
         <p>Identity Management</p>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .login-logo-wrapper {
           display: flex;
           align-items: center;
