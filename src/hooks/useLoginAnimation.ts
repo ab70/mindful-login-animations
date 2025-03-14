@@ -1,12 +1,10 @@
 
 import { useState, useEffect } from 'react';
 
-type AnimationType = 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'scale';
-
 export interface LoginAnimationOptions {
   delay?: number;
   duration?: number;
-  type?: AnimationType;
+  type?: 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'scale';
 }
 
 export const useLoginAnimation = (options: LoginAnimationOptions = {}) => {
@@ -23,7 +21,7 @@ export const useLoginAnimation = (options: LoginAnimationOptions = {}) => {
     const timer = setTimeout(() => {
       setIsVisible(true);
       
-      // Set animation class based on type
+      // Set animation class based on type using our CSS classes, not Tailwind
       switch (type) {
         case 'fade':
           setAnimationClass('animate-fade');
