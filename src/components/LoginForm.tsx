@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Divider, notification, Spin } from 'antd';
@@ -21,9 +22,9 @@ import {
 import '../styles/login.css';
 import useLoginAnimation from '../hooks/useLoginAnimation';
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const [loading, setLoading] = useState(false);
-  const [loginStatus, setLoginStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [loginStatus, setLoginStatus] = useState('idle');
   const navigate = useNavigate();
   const { isVisible: formVisible } = useLoginAnimation({ delay: 300 });
   const { isVisible: socialVisible } = useLoginAnimation({ delay: 900 });
@@ -37,7 +38,7 @@ const LoginForm: React.FC = () => {
     }, 500);
   }, []);
   
-  const handleLogin = async (values: { email: string; password: string }) => {
+  const handleLogin = async (values) => {
     const { email, password } = values;
     
     if (!email || !password) {
@@ -63,7 +64,7 @@ const LoginForm: React.FC = () => {
         });
         
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/profile');
         }, 1500);
       } else {
         setLoginStatus('error');
@@ -156,7 +157,7 @@ const LoginForm: React.FC = () => {
               />
             </Form.Item>
             <div style={{ textAlign: 'right', marginTop: '-20px', marginBottom: '20px' }}>
-              <a href="#" className="forgot-password">
+              <a href="/password-recovery" className="forgot-password">
                 Forgot Password? <QuestionCircleOutlined />
               </a>
             </div>

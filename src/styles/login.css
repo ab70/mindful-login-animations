@@ -793,6 +793,276 @@
   transform: scale(1.05);
 }
 
+/* Password Recovery Page Styles */
+.recovery-success {
+  text-align: center;
+  padding: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.success-icon {
+  margin-bottom: 20px;
+  animation: scaleIn 0.5s ease-out forwards, pulse 3s infinite alternate;
+}
+
+.recovery-info-card {
+  width: 90%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.recovery-info-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #52bfcb, #7ce0eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+.recovery-info-card p {
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.recovery-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.recovery-step {
+  display: flex;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recovery-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #52bfcb;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  margin: 0 0 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  text-align: left;
+}
+
+.recovery-note {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(82, 191, 203, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(82, 191, 203, 0.2);
+}
+
+.recovery-note p {
+  margin: 0;
+  font-size: 14px;
+  color: #52bfcb;
+  text-align: left;
+}
+
+/* Profile Page Styles */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 30px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.profile-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.profile-card.glass-active {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: scaleIn 0.6s ease-out forwards, borderGlow 4s infinite;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-info p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.profile-badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 30px;
+  background: rgba(82, 191, 203, 0.1);
+  color: #52bfcb;
+  border: 1px solid rgba(82, 191, 203, 0.3);
+}
+
+.logout-button {
+  background: rgba(255, 76, 76, 0.1);
+  border-color: rgba(255, 76, 76, 0.3);
+  color: #ff4c4c;
+}
+
+.logout-button:hover {
+  background: rgba(255, 76, 76, 0.2);
+  border-color: rgba(255, 76, 76, 0.4);
+  color: #ff4c4c;
+}
+
+.profile-tabs .ant-tabs-nav {
+  margin-bottom: 20px;
+}
+
+.profile-form-container {
+  position: relative;
+}
+
+.profile-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.profile-info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.change-password-button {
+  margin-bottom: 20px;
+}
+
+.security-container,
+.activity-container,
+.notifications-container {
+  padding: 0 10px;
+}
+
+.activity-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-group {
+  margin-bottom: 30px;
+}
+
+.notification-group h3 {
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
 /* Animation Utility Classes */
 .animate-fade {
   animation: fadeIn 0.5s ease-out forwards;
@@ -845,5 +1115,69 @@
   
   .feature-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .profile-card {
+    max-width: 100%;
+  }
+  
+  .profile-info-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .profile-avatar-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-card {
+    padding: 20px;
+  }
+  
+  .profile-avatar-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-actions {
+    position: static;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .recovery-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .step-content {
+    text-align: center;
+  }
+  
+  .recovery-note {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .recovery-note p {
+    text-align: center;
   }
 }
