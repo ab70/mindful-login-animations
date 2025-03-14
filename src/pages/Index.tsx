@@ -85,14 +85,14 @@ const Index = () => {
           </div>
           
           <div className="testimonials">
-            <Badge.Ribbon text="Trusted" color="#52bfcb">
+            <Badge.Ribbon text="Trusted" color="#1677ff">
               <div className="trust-badge">
                 <TeamOutlined style={{ fontSize: '24px', marginBottom: '8px' }} />
                 <div className="avatar-group">
                   <Avatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&crop=faces&auto=format&fit=crop" />
                   <Avatar src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200&h=200&crop=faces&auto=format&fit=crop" />
                   <Avatar src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&crop=faces&auto=format&fit=crop" />
-                  <Avatar style={{ backgroundColor: '#52bfcb' }}>+</Avatar>
+                  <Avatar style={{ backgroundColor: '#1677ff' }}>+</Avatar>
                 </div>
                 <div className="testimonial-text">
                   <span>10,000+</span> companies trust our platform
