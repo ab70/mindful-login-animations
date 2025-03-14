@@ -107,13 +107,13 @@ const Profile = () => {
   ];
   
   return (
-    <div className="login-page">
+    <div className="login-page profile-page">
       <div className="login-background" style={{ position: 'fixed' }}>
         <LoginBackground />
       </div>
       
-      <div className="profile-container">
-        <div className={`profile-card ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`}>
+      <div className={`profile-fullpage-container ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`}>
+        <div className="profile-header-container">
           <div className="profile-header">
             <div className="profile-avatar-section">
               <Badge count={<CheckCircleFilled style={{ color: '#52bfcb' }} />} offset={[-5, 5]}>
@@ -148,7 +148,9 @@ const Profile = () => {
               Logout
             </Button>
           </div>
-          
+        </div>
+        
+        <div className="profile-content-container">
           <Tabs defaultActiveKey="profile" className="profile-tabs">
             <TabPane 
               tab={
@@ -178,6 +180,7 @@ const Profile = () => {
                   layout="vertical"
                   initialValues={userData}
                   onFinish={handleSaveProfile}
+                  className="profile-form"
                 >
                   <Form.Item
                     name="name"
@@ -334,4 +337,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
