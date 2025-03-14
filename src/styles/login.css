@@ -653,7 +653,7 @@
 
 .promo-icon {
   font-size: 32px;
-  color: #1677ff;
+  color: #52bfcb;
   animation: hoverFloat 4s ease-in-out infinite;
 }
 
@@ -673,7 +673,7 @@
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
-  background: linear-gradient(90deg, #1677ff, #69c0ff);
+  background: linear-gradient(90deg, #52bfcb, #7ce0eb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -716,7 +716,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  background: #1677ff;
+  background: #52bfcb;
   border-radius: 50%;
   color: white;
 }
@@ -767,7 +767,7 @@
 
 .testimonial-text span {
   font-weight: 700;
-  color: #1677ff;
+  color: #52bfcb;
 }
 
 .security-badges {
