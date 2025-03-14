@@ -15,7 +15,8 @@ import {
   SafetyCertificateFilled,
   KeyOutlined,
   QuestionCircleOutlined,
-  AppstoreOutlined
+  AppstoreOutlined,
+  SafetyOutlined
 } from '@ant-design/icons';
 import '../styles/login.css';
 import useLoginAnimation from '../hooks/useLoginAnimation';
@@ -28,7 +29,6 @@ const LoginForm: React.FC = () => {
   const { isVisible: socialVisible } = useLoginAnimation({ delay: 900 });
   const { isVisible: footerVisible } = useLoginAnimation({ delay: 1200 });
   
-  // Add glass effect animation
   const [glassActive, setGlassActive] = useState(false);
   
   useEffect(() => {
@@ -52,33 +52,27 @@ const LoginForm: React.FC = () => {
     setLoginStatus('idle');
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // For demo purposes, let's assume login is successful if email contains "admin"
       if (email.includes('admin')) {
         setLoginStatus('success');
         
-        // Show success notification
         notification.success({
           message: 'Login successful',
           description: 'Welcome back to SecureID',
         });
         
-        // Redirect after successful animation
         setTimeout(() => {
           navigate('/dashboard');
         }, 1500);
       } else {
         setLoginStatus('error');
         
-        // Show error notification
         notification.error({
           message: 'Login failed',
           description: 'Invalid email or password',
         });
         
-        // Reset to idle after error animation
         setTimeout(() => {
           setLoginStatus('idle');
         }, 1500);
@@ -142,7 +136,7 @@ const LoginForm: React.FC = () => {
                 type="email"
                 disabled={loading}
                 className="glass-input"
-                suffix={<SecurityScanOutlined className="input-icon-suffix" />}
+                suffix={<SafetyOutlined className="input-icon-suffix" />}
               />
             </Form.Item>
           </div>
