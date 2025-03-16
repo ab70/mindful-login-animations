@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Form, 
   Input, 
-  Button, 
+  Button as AntButton, 
   Avatar, 
   Divider, 
   notification, 
@@ -29,6 +28,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import LoginBackground from '../components/LoginBackground';
 import useLoginAnimation from '../hooks/useLoginAnimation';
+import NavBar from '../components/NavBar';
 import '../styles/login.css';
 
 const { TabPane } = Tabs;
@@ -80,7 +80,6 @@ const Profile = () => {
     navigate('/');
   };
   
-  // Mock user data
   const userData = {
     name: 'Admin User',
     email: 'admin@example.com',
@@ -90,7 +89,6 @@ const Profile = () => {
     twoFactorEnabled: true
   };
   
-  // Mock activity data
   const activityData = [
     { action: 'Login', time: '2023-04-15 09:23 AM', ip: '192.168.1.1' },
     { action: 'Password Changed', time: '2023-04-01 14:45 PM', ip: '192.168.1.1' },
@@ -98,7 +96,6 @@ const Profile = () => {
     { action: 'Profile Updated', time: '2023-03-15 16:30 PM', ip: '192.168.1.1' },
   ];
   
-  // Security settings
   const securitySettings = [
     { name: 'Two-Factor Authentication', value: userData.twoFactorEnabled },
     { name: 'Login Notifications', value: true },
@@ -112,7 +109,9 @@ const Profile = () => {
         <LoginBackground />
       </div>
       
-      <div className={`profile-fullpage-container ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`}>
+      <NavBar />
+      
+      <div className={`profile-fullpage-container ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`} style={{ paddingTop: '70px' }}>
         <div className="profile-header-container">
           <div className="profile-header">
             <div className="profile-avatar-section">
@@ -139,14 +138,14 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <Button 
+            <AntButton 
               icon={<LogoutOutlined />} 
               onClick={handleLogout}
               danger
               className="logout-button"
             >
               Logout
-            </Button>
+            </AntButton>
           </div>
         </div>
         
