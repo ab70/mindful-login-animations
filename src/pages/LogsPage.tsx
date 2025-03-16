@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Layout, 
@@ -27,7 +26,6 @@ import {
   UserOutlined,
   LockOutlined,
   KeyOutlined,
-  ShieldOutlined,
   SettingOutlined,
   BellOutlined,
   QuestionCircleOutlined,
@@ -35,9 +33,9 @@ import {
   LogoutOutlined,
   TeamOutlined,
   AppstoreOutlined,
-  BarChartOutlined,
-  SafetyOutlined
+  BarChartOutlined
 } from '@ant-design/icons';
+import { Shield } from 'lucide-react';
 import LogViewer from '../components/LogViewer';
 import '../styles/log-viewer.css';
 
@@ -108,7 +106,7 @@ const LogsPage: React.FC = () => {
           borderBottom: '1px solid rgba(255,255,255,0.1)',
           marginBottom: 16
         }}>
-          <ShieldOutlined style={{ fontSize: 24, marginRight: collapsed ? 0 : 12 }} />
+          <Shield size={24} style={{ marginRight: collapsed ? 0 : 12 }} />
           {!collapsed && <Typography.Title level={4} style={{ color: 'white', margin: 0 }}>SecureID</Typography.Title>}
         </div>
         
@@ -127,7 +125,7 @@ const LogsPage: React.FC = () => {
           <Menu.Item key="applications" icon={<AppstoreOutlined />}>
             Applications
           </Menu.Item>
-          <Menu.Item key="policies" icon={<SafetyOutlined />}>
+          <Menu.Item key="policies" icon={<Shield size={16} />}>
             Policies
           </Menu.Item>
           <Menu.Item key="access" icon={<KeyOutlined />}>
@@ -221,7 +219,7 @@ const LogsPage: React.FC = () => {
                   <Statistic 
                     title="Security Events" 
                     value={42} 
-                    prefix={<ShieldOutlined />}
+                    prefix={<Shield size={18} />}
                     valueStyle={{ color: '#52bfcb' }}
                   />
                 </Card>
