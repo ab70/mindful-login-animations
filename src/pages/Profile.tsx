@@ -26,6 +26,7 @@ import {
   SafetyCertificateFilled
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
 import LoginBackground from '../components/LoginBackground';
 import useLoginAnimation from '../hooks/useLoginAnimation';
 import NavBar from '../components/NavBar';
@@ -163,14 +164,22 @@ const Profile = () => {
               <div className="profile-form-container">
                 <div className="profile-actions">
                   <Button 
-                    type={editMode ? "primary" : "default"} 
-                    icon={editMode ? <SaveOutlined /> : <EditOutlined />}
+                    variant={editMode ? "default" : "outline"} 
+                    className={editMode ? "bg-primary text-white" : ""}
                     onClick={() => editMode ? null : setEditMode(true)}
-                    htmlType={editMode ? "submit" : "button"}
+                    type={editMode ? "submit" : "button"}
                     form={editMode ? "profile-form" : undefined}
-                    loading={loading}
+                    disabled={loading}
                   >
-                    {editMode ? "Save Changes" : "Edit Profile"}
+                    {editMode ? (
+                      <>
+                        <SaveOutlined className="mr-1" /> Save Changes
+                      </>
+                    ) : (
+                      <>
+                        <EditOutlined className="mr-1" /> Edit Profile
+                      </>
+                    )}
                   </Button>
                 </div>
                 
@@ -235,12 +244,11 @@ const Profile = () => {
             >
               <div className="security-container">
                 <Button 
-                  type="primary" 
-                  icon={<LockOutlined />}
+                  variant="default"
                   className="change-password-button"
                   onClick={() => navigate('/password-recovery')}
                 >
-                  Change Password
+                  <LockOutlined className="mr-1" /> Change Password
                 </Button>
                 
                 <Divider>Security Settings</Divider>
