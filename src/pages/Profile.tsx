@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   Form, 
   Input, 
-  Button as AntButton, 
+  Button, 
   Avatar, 
   Divider, 
   notification, 
@@ -26,10 +27,8 @@ import {
   SafetyCertificateFilled
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
 import LoginBackground from '../components/LoginBackground';
 import useLoginAnimation from '../hooks/useLoginAnimation';
-import NavBar from '../components/NavBar';
 import '../styles/login.css';
 
 const { TabPane } = Tabs;
@@ -81,6 +80,7 @@ const Profile = () => {
     navigate('/');
   };
   
+  // Mock user data
   const userData = {
     name: 'Admin User',
     email: 'admin@example.com',
@@ -90,6 +90,7 @@ const Profile = () => {
     twoFactorEnabled: true
   };
   
+  // Mock activity data
   const activityData = [
     { action: 'Login', time: '2023-04-15 09:23 AM', ip: '192.168.1.1' },
     { action: 'Password Changed', time: '2023-04-01 14:45 PM', ip: '192.168.1.1' },
@@ -97,6 +98,7 @@ const Profile = () => {
     { action: 'Profile Updated', time: '2023-03-15 16:30 PM', ip: '192.168.1.1' },
   ];
   
+  // Security settings
   const securitySettings = [
     { name: 'Two-Factor Authentication', value: userData.twoFactorEnabled },
     { name: 'Login Notifications', value: true },
@@ -110,9 +112,7 @@ const Profile = () => {
         <LoginBackground />
       </div>
       
-      <NavBar />
-      
-      <div className={`profile-fullpage-container ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`} style={{ paddingTop: '70px' }}>
+      <div className={`profile-fullpage-container ${glassActive ? 'glass-active' : ''} ${contentVisible ? 'visible' : ''}`}>
         <div className="profile-header-container">
           <div className="profile-header">
             <div className="profile-avatar-section">
@@ -139,14 +139,14 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <AntButton 
+            <Button 
               icon={<LogoutOutlined />} 
               onClick={handleLogout}
               danger
               className="logout-button"
             >
               Logout
-            </AntButton>
+            </Button>
           </div>
         </div>
         
@@ -164,22 +164,14 @@ const Profile = () => {
               <div className="profile-form-container">
                 <div className="profile-actions">
                   <Button 
-                    variant={editMode ? "default" : "outline"} 
-                    className={editMode ? "bg-primary text-white" : ""}
+                    type={editMode ? "primary" : "default"} 
+                    icon={editMode ? <SaveOutlined /> : <EditOutlined />}
                     onClick={() => editMode ? null : setEditMode(true)}
-                    type={editMode ? "submit" : "button"}
+                    htmlType={editMode ? "submit" : "button"}
                     form={editMode ? "profile-form" : undefined}
-                    disabled={loading}
+                    loading={loading}
                   >
-                    {editMode ? (
-                      <>
-                        <SaveOutlined className="mr-1" /> Save Changes
-                      </>
-                    ) : (
-                      <>
-                        <EditOutlined className="mr-1" /> Edit Profile
-                      </>
-                    )}
+                    {editMode ? "Save Changes" : "Edit Profile"}
                   </Button>
                 </div>
                 
@@ -244,11 +236,12 @@ const Profile = () => {
             >
               <div className="security-container">
                 <Button 
-                  variant="default"
+                  type="primary" 
+                  icon={<LockOutlined />}
                   className="change-password-button"
                   onClick={() => navigate('/password-recovery')}
                 >
-                  <LockOutlined className="mr-1" /> Change Password
+                  Change Password
                 </Button>
                 
                 <Divider>Security Settings</Divider>
