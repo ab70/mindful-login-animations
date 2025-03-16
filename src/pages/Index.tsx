@@ -15,8 +15,8 @@ import useLoginAnimation from '../hooks/useLoginAnimation';
 import '../styles/login.css';
 
 const Index = () => {
-  const { isVisible: contentVisible } = useLoginAnimation({ delay: 100 });
-  const { isVisible: imageVisible } = useLoginAnimation({ delay: 600 });
+  const { isVisible: contentVisible } = useLoginAnimation({ delay: 50 }); // Reduced from 100 to 50
+  const { isVisible: imageVisible } = useLoginAnimation({ delay: 300 }); // Reduced from 600 to 300
   
   return (
     <div className="login-page">

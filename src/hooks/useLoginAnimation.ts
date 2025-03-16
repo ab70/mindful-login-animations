@@ -10,7 +10,7 @@ export interface LoginAnimationOptions {
 export const useLoginAnimation = (options: LoginAnimationOptions = {}) => {
   const { 
     delay = 0, 
-    duration = 500,
+    duration = 300, // Reduced from 500 to 300
     type = 'fade'
   } = options;
   
