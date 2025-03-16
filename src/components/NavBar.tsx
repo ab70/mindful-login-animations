@@ -58,7 +58,7 @@ const NavBar = () => {
       <div className="flex items-center gap-4">
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger asChild>
+            <TooltipTrigger>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button 
@@ -70,7 +70,7 @@ const NavBar = () => {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent 
-                  className="w-[420px] p-4" 
+                  className="w-[420px] p-4 bg-white" 
                   align="start"
                   sideOffset={10}
                 >
